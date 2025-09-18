@@ -25,6 +25,7 @@ public:
     {
         head = tail = NULL;
     }
+
     void push_front(int val)//O(1)
     {
         Node *newNode = new Node(val);
@@ -37,6 +38,17 @@ public:
             newNode->next = head; // establish connection with the head node
             head = newNode;       // head will be the new node
         }
+    }
+     void pop_front(){//O(1)
+
+        if(head == NULL){
+            cout << "List is null" <<endl;
+            return;
+        }
+        Node* temp=head;
+        head=head->next;
+        temp->next=NULL;
+        delete temp;
     }
 
     void print()
@@ -54,9 +66,12 @@ public:
 int main()
 {
     List ll;
+  
     ll.push_front(1);
     ll.push_front(2);
     ll.push_front(3);
+
+    ll.pop_front();
 
 
     ll.print();
